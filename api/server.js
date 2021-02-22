@@ -23,7 +23,7 @@ server.use("/api/auth", authRouter);
 server.use("/api/users", usersRouter);
 server.use("/api/jokes", restrict, jokesRouter); // only logged-in users should have access!
 
-//global middleware for catch 500 error
+//global middleware for catch 500 error..
 server.use((err, req, res, next) => {
   // console.log("505 error----->", err);
   res.status(500).json({ Error: "500 Error, what happened?" });
