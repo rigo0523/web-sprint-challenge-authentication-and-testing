@@ -9,7 +9,7 @@ const server = require("./server");
 const db = require("../data/dbConfig");
 
 //Allen's guided tut
-const testUser = { username: "test", password: "test" };
+const testUser = { username: "test2", password: "test1" };
 
 describe("server.js", () => {
   //describe 1 GET /api/jokes
