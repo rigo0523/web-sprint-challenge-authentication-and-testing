@@ -54,7 +54,7 @@ router.post("/login", (req, res, next) => {
           //endpoins
           const token = generateToken(user);
           res.status(200).json({
-            message: `welcome ${user.username}, have a cookie`,
+            message: `welcome ${user.username}`,
             token,
           });
         } else {
