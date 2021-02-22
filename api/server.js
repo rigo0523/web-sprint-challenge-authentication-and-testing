@@ -1,19 +1,32 @@
-const express = require('express');
-const cors = require('cors');
-const helmet = require('helmet');
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
 
-const restrict = require('./middleware/restricted.js');
+//restricted middleware for dad jokes
+const restrict = require("./middleware/restricted.js");
 
-const authRouter = require('./auth/auth-router.js');
-const jokesRouter = require('./jokes/jokes-router.js');
+//routers
+const authRouter = require("./auth/auth-router.js");
+const jokesRouter = require("./jokes/jokes-router.js");
+const usersRouter = require("../users/users-router");
 
+//server
 const server = express();
 
+//global middleware
 server.use(helmet());
 server.use(cors());
 server.use(express.json());
 
-server.use('/api/auth', authRouter);
-server.use('/api/jokes', restrict, jokesRouter); // only logged-in users should have access!
+///Server ENDPOINTS ------->
+server.use("/api/auth", authRouter);
+server.use("/api/users", usersRouter);
+server.use("/api/jokes", restrict, jokesRouter); // only logged-in users should have access!
+
+//global middleware for catch 500 error
+server.use((err, req, res, next) => {
+  // console.log("505 error----->", err);
+  res.status(500).json({ Error: "500 Error, what happened?" });
+});
 
 module.exports = server;

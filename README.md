@@ -74,6 +74,15 @@ Submit via Codegrade. Remember to add a query string to your Webhook's Payload U
 Be prepared to demonstrate your understanding of this week's concepts by answering questions on the following topics.
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
+   Session is store in memory as a cookie while json web tokens are hashedpasswords used to
+   authenticate and authorize to an endpoint, the client stores this in the local storate through
+   Authorization
 2. What does `bcryptjs` do to help us store passwords in a secure manner?
+   it helpes us hash the password with an algorithm and stores it in database,
+   we can comapre the hash password when loggin if the pure passsword === hashed password then
+   we can say the password and username is valid and we are logged in
 3. How are unit tests different from integration and end-to-end testing?
+   end to end est rely on external compoenents, end to end checks that all the test works in accordance
 4. How does _Test Driven Development_ change the way we write applications and tests?
+   Test-Driven Development starts with designing and developing tests for every small functionality of an application. TDD instructs developers to write new code only if an automated test has failed. This avoids duplication of code. The full form of TDD is Test-driven development
+   You are expected to be able to answer questions in these areas.
