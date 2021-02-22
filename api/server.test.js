@@ -8,8 +8,8 @@ const request = require("supertest");
 const server = require("./server");
 const db = require("../data/dbConfig");
 
-//Allen's guided tut
-const testUser = { username: "test2", password: "test1" };
+//it tests users
+const testUser = { username: "test", password: "test" };
 
 describe("server.js", () => {
   //describe 1 GET /api/jokes
@@ -39,7 +39,7 @@ describe("server.js", () => {
       expect(res.status).toBe(500);
     });
   });
-  //describe 3 POST /api/auth/login -- LOGIN
+  //describe 3 POST /api/auth/login
   describe("POST login with user", () => {
     test("should return a status code of 200 with logged in user", async () => {
       const res = await request(server).post("/api/auth/login").send(testUser);
