@@ -3,7 +3,7 @@ test("sanity", () => {
   expect(true).toBe(true);
 });
 
-// Write your tests here
+//tests
 const request = require("supertest");
 const server = require("./server");
 const db = require("../data/dbConfig");
