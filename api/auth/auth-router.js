@@ -10,6 +10,9 @@ const User = require("../../users/users-model");
 router.post("/register", (req, res, next) => {
   const credentials = req.body;
   //validate credentials, can be added as a middleware too
+  if (!credentials) {
+    res.status(400).json({ message: "username and password required...." });
+  }
 
   //is valid from users/users-service.js which makes sure we input username
   //and password otherwise we get an error
@@ -25,11 +28,13 @@ router.post("/register", (req, res, next) => {
         //endpoins
         // const token = generateToken(newUser);
         //adding token as a response causes my tests to fail, leaving out.....
-
-        res.status(201).json(newUser);
+        if (newUser) {
+          res.status(201).json(newUser);
+        } else {
+          res.status(404).json({ message: `${newUser.username} taken` });
+        }
       })
       .catch((err) => {
-        console.log("errrr----->", err);
         res.status(500).json({ message: `${credentials.username} taken` });
       });
   } else {
@@ -54,7 +59,7 @@ router.post("/login", (req, res, next) => {
           //endpoins
           const token = generateToken(user);
           res.status(200).json({
-            message: `welcome ${user.username}`,
+            message: `welcome ${user.username}, have a cookie`,
             token,
           });
         } else {
